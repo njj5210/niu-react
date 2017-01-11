@@ -1,0 +1,32 @@
+<!doctype html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport"
+          content="width=device-width, user-scalable=no, initial-scale=1.0, maximum-scale=1.0, minimum-scale=1.0">
+    <meta http-equiv="X-UA-Compatible" content="ie=edge">
+    <script src="js/browser.min.js"></script>
+    <script src="js/react.js"></script>
+    <script src="js/react-dom.js"></script>
+    <title>Document</title>
+</head>
+<body>
+<div id="example">
+
+</div>
+<script type="text/babel">
+    //Hello组件中有多个子节点，空：undefined，一个值：object，多个值：array。
+    //map用来循环输出this.props.children中的每个子节点。
+    class Hello extends React.Component{
+        render(){
+            return <ul>{
+                React.Children.map(this.props.children, function (a) {
+                    return <li>{a}</li>
+                    })}
+                </ul>
+              }
+         }
+    ReactDOM.render(<Hello><span>hello</span><span>world</span></Hello>, document.getElementById("example"));
+</script>
+</body>
+</html>

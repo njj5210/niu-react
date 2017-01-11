@@ -1,0 +1,43 @@
+<!doctype html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport"
+          content="width=device-width, user-scalable=no, initial-scale=1.0, maximum-scale=1.0, minimum-scale=1.0">
+    <meta http-equiv="X-UA-Compatible" content="ie=edge">
+    <script src="js/react.js"></script>
+    <script src="js/react-dom.js"></script>
+    <script src="js/browser.min.js"></script>
+    <title>Document</title>
+</head>
+<body>
+<div id="example">
+
+</div>
+<script type="text/babel">
+    class Time extends React.Component{
+        constructor(){
+            super();
+            this.state={time:0};
+            console.log("构造函数");
+        }
+        componentWillMount(){
+            console.log("组件即将装配到页面当中")
+        }
+        render(){
+            console.log("组件正在装配到页面当中")
+            return <div>{this.state.time}</div>
+        }
+        componentDidMount(){
+            var num=0;
+            setInterval(()=>{
+                console.log(num);
+                num++
+                this.setState({time:num})
+            },1000)
+        }
+    }
+    ReactDOM.render(<Time/>,document.getElementById("example"))
+</script>
+</body>
+</html>
